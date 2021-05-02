@@ -1,0 +1,227 @@
+Command Line (Baris Perintah)
+=============================
+	Command Line(Baris Perintah) adalah sebuah interface yang digunakan dengan cara
+memasukkan perintah dengan mengetikkan perintahnya. output dari command line ini adalah berupa
+teks. penggunaan command line lebih cocok digunakan untuk mengelola dan mengurus jaringan, 
+hosting web, administrasi, keamanan dll.
+
+Shell
+=====
+	Shell berfungsi untuk menerjemahkan perintah perintah pada CLI.
+
+Perintah Dasar Shell
+====================
+		- cd [location], digunakan untuk berpindah ke directory yang diinginkan, cth : cd praksisop
+		- mkdir [option], berfungsi untuk membuat sebuah directory/folder baru pada directory
+						  sekarang, cth : mkdir data 
+		- rm [option], digunakan untuk menghapus sebuah file pada directory yang sekarang dibuka
+			       cth : rm file1.txt
+		- rmdir [option], digunakan untuk menghapus sebuah directory.
+		- nano [option], digunakan untuk membuka dan membuat sebuah file text baru menggunakan
+			         nano text editor, cth : nano file.txt
+		- ls [options], berfungsi untuk menampilkan list konten dari directory yang sekarang
+					    dibuka.
+				> ls -l, untuk menampilkan list panjang informasi semua file/directory yang
+					 ada pada directory seperti permission, nama file, dll.
+				> ls -a, menunjukkan list file dan directory yang ter hidden
+				> ls /etc, menunjukkan isi konten dari masing masing directory
+				> ls -al, gabungan dari -l dan -a berfungsi untuk menampilkan list panjang
+					  informasi dari file/directory pada directory sekarang beserta file
+				          dan directory yang hidden
+		- mv [option], digunakan untuk memindahkan suatu file.
+		- cp [option], digunakan untuk meng-copy suatu file beserta isi konten nya ke directory lain
+			       cth : cp file1.txt /home/filetext
+		- touch [option], digunakan untuk membuat file baru yang kosong.
+		- pwd [option], berfungsi untuk mengOutputkan dimana direktori kita sekarang berada
+		- mv [option] [option], digunakan untuk merubah nama sebuah file pada directory sekarang
+			                cth : mv file1.txt file2.txt
+
+Wildcard
+========
+	Wildcard adalah character character spesial yang bisa digunakan pada shell linux. ada
+beberapa macam wildcard yang ada, berikut adalah beberapa macam wildcard.
+		- [option]*, berfungsi untuk mengekskusi semua file sesuai perintah dengan nama file
+			     sesuai option yang di inginkan, cth : rm file*.txt --> perintah ini akan
+			     menghapus semua file dengan awalan nama file dan berekstensi .txt
+		- [option]?, fungsinya hampir sama dengan "*", namun kalau "?" hanya akan mengekskusi file 
+		             dengan awalan nama sesuai option dan mengambil hanya satu character setelahnya
+			     cth : rm file?.txt akan menghapus semua file yang mempunya nama berawalan file
+			     dan diikuti hanya satu character setelahnya dan juga berekstensi .txt seperti
+			     file1.txt file2.txt dan sebagainya.
+		- [], berfungsi untuk menyatukan character yang di inginkan agar bisa di eksekusi secara
+			  bersamaan, cth : ls file.[jm]pg, perintah ini akan menampilkan informasi dari file
+			  yang berekstensi jpg dan mpg
+		- [!], kebalikan dari [], tanda [!] akan mengeksekusi file selain yang ada pada [!]
+			   cth : ls file.[mj]pg, berarti akan menampilkan informasi dari file yang berekstensi
+			   selain mpg dan jpg
+		
+
+Manual Pages
+============
+		- man [option], digunakan untuk menampilkan informasi manual dari suatu perintah.
+		- man -k[option], digunakan untuk menampilkan informasi manual dari program yang diinginkan.
+		
+
+
+Permission
+==========
+	Permission atau hak akses adalah suatu pembatasan pada file untu melakukan 3 perintah
+yaitu rwx atau read, write, execute.
+
+Subjek Permission
+=================
+		- Others, semua user yang tidak tergabung pada grup maupun sang pemilik file (owner)
+		- Owner, merupakan pemilik atau owner dari file tersebut.
+		- Group, semua user yang masuk dalam satu grup dan memiliki file tersebut.
+		
+Tipe Permission
+===============
+		- r (read) memungkinkan untuk melihat isi konten dari sebuah file.
+		- w (write) memungkinkan untuk merubah isi dari konten sebuah file.
+		- x (execute), memungkinkan untuk mengekeskusi dan menjalankan sebuah file.
+
+BASH SCRIPT
+===========
+	Bash script sebuah script yang mirip dengan bahasa pemrograman yang hanya bisa melakukan 
+perintah yang sederhana, Bash script mendukung looping, if else dll.
+
+Input
+=====
+	Pada bash script juga bisa meminta input dari user untuk menjalankan sebuah program. 
+	cth :
+			echo "Output : "
+			read kalimat
+			echo "outputnya adalah $kalimat"
+	Maka yang terjadi adalah 
+			Output : 
+			> hello world
+			outputnya adalah hello world
+
+Variable
+========
+	Variable adalah tempat yang digunakan untuk menyimpan suatu data di memory komputer namun
+variable itu akan hilang apabila script sudah dijalankan.
+	cth :
+			kalimat = "hello world"
+			echo "Output : " $kalimat
+			maka outputnya "Output : hello world"
+cara memanggil variable bash yang sudah di buat selalu di awali dengan tanda "$".
+
+Operations
+==========
+	Pada bash scripting juga bisa melakukan perintah operasi aritmatika seperti pertambahan, 
+pengurangan, perkalian, dll.
+		- \*, digunakan untuk operasi perkalian.
+		- /, digunakan untuk operasi pembagian.	
+		- +, digunakan unruk operasi pertambahan.
+		- -, digunakan untuk operasi pengurangan.
+		- %, digunakan untuk operasi sisa bagi atau biasa disebut modulus.
+		- ++, digunakan untuk operasi increment.
+		- --, digunakan untuk operasi decreament.
+		
+	lalu untuk menjalankan operasi - operasi diatas pada bash script terdapat beberapa 
+cara, berikut adalah contoh menjalankan operasi operasi aritmatika pada bash script.
+		- let
+			cth : 	
+					var1=2
+					var2=2
+					let hasil=var1/var2
+					echo $hasil
+			maka outputnya adalah 1
+		- expr
+			cth :	
+					var1=4
+					var2=4
+					expr $var1/$var2
+			outputnya juga 1
+			
+Compare string dan number
+=========================
+		- NUMBER
+			- -eq, berarti sama dengan
+			- -gt, berarti lebih besar dari
+			- -ne, berarti tidak sama dengan
+			- -lt, berarti lebih kecil dari
+			- -le, berarti lebih keecil dari sama dengan
+			- -ge, berarti lebih besar dari atau sama dengan
+			
+		- STRING
+			- ==, berarti sama dengan
+			- !=, berarti tidak sama dengan
+			- ">", berarti lebih besar dari
+			- "<", berarti lebih kecil dari
+			- ">=", berarti lebih besar sama dengan
+			- "<=", berarti lebih kecil sama dengan
+
+Boolean Operations
+==================
+		Operasi boolean adalah operasi yang hasil outputnya berupa true atau false.
+		- &&, adalah operasi and
+		- ||, adalah operasi or
+
+Array
+=====
+		Pada bash script juga support array, berikut adalah contoh dari penggunaan array 
+		pada bash script.
+	cth :
+			binatang={"kucing", "anjing", "monyet"}
+			echo ${vokalis[0]}, Output : kucing
+			echo ${vokalis[1]}, Output : anjing
+			echo ${vokalis[2]}, Output : monyet
+		
+			
+If else
+========
+	cth :
+			echo "masukkan angka "
+			read angka
+			if [%angka%2 -eq 0]
+			then
+				echo "genap"
+			else 
+				echo "ganjil"
+			fi
+		maka outputnya :
+			masukkan angka
+			>10
+			genap
+
+WHILE LOOPING
+==============
+	while loop adalah sebuah perulangan yang dimana kita belum tau batas awal atau batas akhir
+dari looping yang akan kita jalankan.
+	ex :
+			angka=1
+			while [ $angka -le 5 ]
+			do
+				echo "Perulangan while ke-$angka"
+				((angka++))
+			done
+			echo "loop selesai"
+	Output	:
+			Perulangan while ke-1
+			Perulangan while ke-2
+			Perulangan while ke-3
+			Perulangan while ke-4
+			Perulangan while ke-5
+			loop selesai
+
+For loop
+=========
+	For loop adalah sebuah perulangan yang dimana kita dari awal sudah tahu batas awal dan
+batas akhir dari looping yang akan kita jalankan.
+	cth :
+			for value in {1..5}
+			do
+				echo "Perulangan ke-$value"
+			done
+			
+			echo "loop selesai"
+	Output :
+			Perulangan ke-1
+			Perulangan ke-2
+			Perulangan ke-3
+			Perulangan ke-4
+			Perulangan ke-5
+			loop selesai
+
